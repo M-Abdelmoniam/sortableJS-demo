@@ -1,0 +1,281 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .remove-tag {
+        display:none;
+    }
+    .selected {
+        background-color: #262bca;
+        border: solid #9897c2 1px;
+        color: white;
+    }
+    .drop-zone-tag {
+        height:120px;
+        max-height: 120px;
+        overflow-y:auto;
+    }
+    #TagsSetting .list-group-flush > .list-group-item {
+        font-size: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+</style>
+<script src="~/Scripts/Jquery-Sortable/Sortable.js"></script>
+<script src="~/Scripts/Jquery-Sortable/jquery-sortable.js"></script>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tagSettingModal">
+    Launch static backdrop modal
+</button>
+
+<div class="modal fade" id="tagSettingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid" id="TagsSetting">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card text-center" style="height:100%;">
+                                <div class="card-header">
+                                    <span class="pull-right" onclick="openTagsConfigWnd()"><i class="fa fa-cogs"></i></span>
+                                    <h5>Tags</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <h5>System</h5>
+                                            <ul class="list-group list-group-flush target-tags">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    A list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    A second list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    A third list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <h5>User</h5>
+                                            <ul class="list-group list-group-flush target-tags">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    B list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    B second list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    B third list item
+                                                    <span>
+                                                        <i class="handle fa fa-arrows-alt"></i>
+                                                        <i class="remove-tag fa fa-times"></i>
+                                                        <i class="edit-tag fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="card-footer text-muted">
+                                    Count of Tags : <span>200</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card text-center">
+                                <div class="card-header">
+                                    <h5>Available Areas</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card text-center border-primary">
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush drop-zone-tag">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 offset-md-4">
+                                            <div class="card text-center border-primary">
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush drop-zone-tag">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 offset-md-4">
+                                            <div class="card text-center border-primary">
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush drop-zone-tag">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="card text-center border-primary">
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush drop-zone-tag">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 offset-md-4">
+                                            <div class="card text-center border-primary">
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush drop-zone-tag">
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="saveTags()">Save</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('.target-tags').sortable({
+            group: {
+                name: 'dropZoneTag',
+                pull: 'clone',
+                put: false // Do not allow items to be put into this list
+            },
+            multiDrag: true, // Enable multi-drag
+            selectedClass: 'selected', // The class applied to the selected items
+            //handle: '.handle', // handle's class
+            animation: 150,
+            sort: false,
+            onEnd: function (/**Event*/evt) {
+                //console.log(evt);
+                var _to = $(evt.to);
+                if (_to.hasClass('drop-zone-tag')) {
+                    var itemEl = $(evt.item);  // dragged HTMLElementgdfgdfg
+                    var itemList = $(evt.items);
+                    hideAndShowOptionAfterDrop(itemList, itemEl);
+                }
+                //evt.to;    // target listsadfgasdfg
+                //evt.from;  // previous list
+                //evt.oldIndex;  // element's old index within old parent
+                //evt.newIndex;  // element's new index within new parent
+                //evt.oldDraggableIndex; // element's old index within old parent, only counting draggable elements
+                //evt.newDraggableIndex; // element's new index within new parent, only counting draggable elements
+                //evt.clone // the clone element
+                //evt.pullMode;  // when item is in another sortable: `"clone"` if cloning, `true` if moving
+            }
+        });
+        //drop-zone-tagsdfga
+        $('.drop-zone-tag').sortable({
+            group: 'dropZoneTag',
+            handle: '.handle', // handle's class
+            animation: 150,
+            onEnd: function (/**Event*/evt) {
+                //console.log(evt);
+                var itemEl = evt.item;  // dragged HTMLElement
+                //evt.to;    // target list
+                //evt.from;  // previous list
+                //evt.oldIndex;  // element's old index within old parent
+                //evt.newIndex;  // element's new index within new parent
+                //evt.oldDraggableIndex; // element's old index within old parent, only counting draggable elements
+                //evt.newDraggableIndex; // element's new index within new parent, only counting draggable elements
+                //evt.clone // the clone element
+                //evt.pullMode;  // when item is in another sortable: `"clone"` if cloning, `true` if moving
+            },
+            onMove: function (/**Event*/evt, /**Event*/originalEvent) {
+                console.log(evt);
+                console.log(originalEvent);
+                // Example: https://jsbin.com/nawahef/edit?js,output
+                //evt.dragged; // dragged HTMLElement
+                //evt.draggedRect; // DOMRect {left, top, right, bottom}
+                //evt.related; // HTMLElement on which have guided
+                //evt.relatedRect; // DOMRect
+                //evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
+                //originalEvent.clientY; // mouse position
+                // return false; — for cancel
+                // return -1; — insert before target
+                // return 1; — insert after target
+                // return true; — keep default insertion point based on the direction
+                // return void; — keep default insertion point based on the direction
+            }
+        });
+
+        $(".remove-tag").click(function (e) {
+            console.log(e);
+            $(e.target).parent().parent().remove();
+        });
+    });
+
+    function hideAndShowOptionAfterDrop(droppedElementsList, droppedElement) {
+        if (droppedElementsList.length > 0) {
+            droppedElementsList.each(function (i, ele) {
+                $(ele).find('.remove-tag').show();
+                $(ele).find('.edit-tag').hide();
+                $(ele).removeClass('selected');
+            });
+        }
+        else {
+            droppedElement.find('.remove-tag').show();
+            droppedElement.find('.edit-tag').hide();
+            droppedElement.removeClass('selected');
+        }
+    }
+    function removeTag(element) {
+        $(element).parent('li').remove();
+    }
+
+    function openTagsConfigWnd() {
+        alert("grid");
+    }
+
+    function saveTags() {
+        alert("save");
+    }
+</script>
